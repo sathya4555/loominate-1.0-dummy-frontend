@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import SendData from "./components/SendData";
 import Socket from "./components/Socket";
-const ENDPOINT = "ws://18.141.166.49:3003";
+const ENDPOINT = "https://18.141.166.49:3003";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -26,7 +26,7 @@ const [notifyContent, setnotifyContent] = useState('')
       setclientProp(data)
     });
     socket.on("new_msg", function(data) {
-        alert("notification: " + data.msg.notificationData + " " + "content: " + data.msg.content);
+        // alert("notification: " + data.msg.notificationData + " " + "content: " + data.msg.content);
         console.log('new msg',data.msg)
         setnotifyData(data.msg.notificationData);
         setnotifyContent(data.msg.content)
