@@ -47,7 +47,7 @@ const SendData = ({ socket, client }) => {
         onChange={(e) => setName(e.target.value)}
       ></input>
       <button onClick={creatpersonalRoom}>login</button>
-      <input
+      {/* <input
         value={tenantname}
         placeholder="enter tenantname"
         onChange={(e) => setTenantname(e.target.value)}
@@ -62,7 +62,7 @@ const SendData = ({ socket, client }) => {
         value={tenantMessage}
         onChange={(e) => setTenantMessage(e.target.value)}
       ></input>
-      <button onClick={sendTenantMessage}>send message to all</button>
+      <button onClick={sendTenantMessage}>send message to all</button> */}
     </div>
   );
 };

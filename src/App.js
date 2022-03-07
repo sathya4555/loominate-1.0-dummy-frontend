@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import SendData from "./components/SendData";
 import Socket from "./components/Socket";
-const ENDPOINT = "http://18.141.166.49:3003";
+const ENDPOINT = "ws://18.141.166.49:3003";
 
 function App() {
   const [response, setResponse] = useState("");
@@ -14,10 +14,10 @@ const [clientProp, setclientProp] = useState('')
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT, { transports: ["websocket"] });
     setsocketProp(socket)
-    socket.on("messageClient", (data) => {
-      setResponse(data.data);
-      console.log(data.data);
-    });
+    // socket.on("messageClient", (data) => {
+    //   setResponse(data.data);
+    //   console.log(data.data);
+    // });
     socket.on("initial", (data) => {
       console.log('clientdata',data);
       setclientProp(data)
@@ -30,12 +30,12 @@ const [clientProp, setclientProp] = useState('')
 
   });
 
-  socket.on('connect', function () {
-    socket.emit('ferret', 'tobi', function (data,fn) {
-      console.log(data); // data will be 'woot'
-      console.log(fn)
-    });
-  });
+  // socket.on('connect', function () {
+  //   socket.emit('ferret', 'tobi', function (data,fn) {
+  //     console.log(data); // data will be 'woot'
+  //     console.log(fn)
+  //   });
+  // });
 
   socket.on('1', function (data, fn) {
     console.log("data");
