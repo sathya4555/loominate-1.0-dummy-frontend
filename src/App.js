@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 import SendData from "./components/SendData";
 import Socket from "./components/Socket";
-const ENDPOINT = "https://18.141.166.49:3003";
+const ENDPOINT = "wss://18.141.166.49:3003/socket.io/?EIO=4&transport=websocket";
 
 function App() {
   const [response, setResponse] = useState("");
