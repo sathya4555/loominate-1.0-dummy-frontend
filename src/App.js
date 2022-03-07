@@ -7,6 +7,9 @@ const ENDPOINT = "ws://18.141.166.49:3003";
 function App() {
   const [response, setResponse] = useState("");
 const [clientProp, setclientProp] = useState('')
+const [notifyData, setnotifyData] = useState('')
+const [notifyContent, setnotifyContent] = useState('')
+
   //  function send() {
   //   socket.emit('message', { data: 'from react app' })
   //  }
@@ -25,6 +28,8 @@ const [clientProp, setclientProp] = useState('')
     socket.on("new_msg", function(data) {
         alert("notification: " + data.msg.notificationData + " " + "content: " + data.msg.content);
         console.log('new msg',data.msg)
+        setnotifyData(data.msg.notificationData);
+        setnotifyContent(data.msg.content)
         // console.log(fn)
         // socket.emit('gotit', { data: data.clientName })
 
@@ -46,7 +51,7 @@ const [clientProp, setclientProp] = useState('')
   }, []);
   return (
     <div className="">
-     { socketProp && <SendData socket={socketProp} client={clientProp}/>}
+     { socketProp && <SendData socket={socketProp} notificationData = {notifyData} notifyContent={notifyContent} client={clientProp}/>}
       <Socket  response={response} />
     </div>
   );

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://localhost:3003";
 
-const SendData = ({ socket, client }) => {
+const SendData = ({ socket, client, notificationData, notifyContent }) => {
   const [dataHook, setdataHook] = useState("");
   const [name, setName] = useState("");
   const [tenantname, setTenantname] = useState("");
@@ -14,6 +14,8 @@ const SendData = ({ socket, client }) => {
       fn("SENT");
     });
   }, []);
+
+
 
   // const socket = socketIOClient(ENDPOINT, { transports: ["websocket"] });
   function send() {
@@ -47,6 +49,10 @@ const SendData = ({ socket, client }) => {
         onChange={(e) => setName(e.target.value)}
       ></input>
       <button onClick={creatpersonalRoom}>login</button>
+
+      <p>{notificationData}</p>
+      <p>{notifyContent}</p>
+
       {/* <input
         value={tenantname}
         placeholder="enter tenantname"
